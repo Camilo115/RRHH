@@ -1,4 +1,4 @@
-package cl.proyecto.recursos_humanos_autenticacion_service.security;
+package cl.proyecto.recursos_humanos_autenticacion_service.service;
 
 import java.util.Date;
 import javax.crypto.SecretKey;

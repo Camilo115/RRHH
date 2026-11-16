@@ -7,9 +7,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import cl.proyecto.recursos_humanos_autenticacion_service.dto.LoginRequest;
 import cl.proyecto.recursos_humanos_autenticacion_service.model.Usuario;
 import cl.proyecto.recursos_humanos_autenticacion_service.repository.UsuarioRepository;
-import cl.proyecto.recursos_humanos_autenticacion_service.security.JwtService;
+import cl.proyecto.recursos_humanos_autenticacion_service.service.JwtService;
 
 @RestController
 @RequestMapping("/auth")
@@ -26,7 +27,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
 
-        Usuario usuario = usuarioRepository.findByCorreo(request.correo).orElse(null);
+        Usuario usuario = usuarioRepository.findByCorreo(request.correo()).orElse(null);
 
         if (usuario == null || !usuario.getContrasena().equals(request.password())) {
             return ResponseEntity.status(401).body("Correo o contraseña incorrecto");
@@ -45,11 +46,5 @@ public class AuthController {
         return ResponseEntity.ok()
                 .header(HttpHeaders.SET_COOKIE, cookie.toString())
                 .body("Inicio de sesión exitoso");
-    }
-
-    public record LoginRequest(String correo, String password) {
-    }
-
-    public record LoginResponse(String token) {
     }
 }

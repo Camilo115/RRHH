@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-RecursosHumanosAutenticacionServiceApplication<recursos_humanos_autenticacion_service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "cl.proyecto.recursos_humanos_autenticacion_service.RecursosHumanosAutenticacionServiceApplication",
+            "projectName": "recursos_humanos_autenticacion_service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
